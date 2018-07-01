@@ -1,0 +1,69 @@
+body{
+    background-color: #000000;
+    color: #ffffff;
+    font-family: 'Arial', 'Helvetica Neue', Helvetica, sans-serif;
+    font-size: 20px;
+    padding: 10px;
+}
+
+#player, #opponent{
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.players, .opponents{
+    height: 300px;
+    width: 250px;
+    float: left;
+    position: relative;
+    border: 7px solid #333333;
+    background-color: #ffffff;
+    color: #000000;
+    text-align: center;
+    margin-right: 25px;
+}
+
+.players:last-child, .opponents:last-child{
+    margin-right: 0;
+}
+
+.players:hover{
+    border-color: #0506ec;
+}
+
+.opponents:hover{
+    border-color: #f02c27;
+}
+
+.name{
+    position: absolute;
+    top: 14px;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.health{
+    position: absolute;
+    bottom: 14px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    color: #0db24c;
+    font-weight: bold;
+}
+
+img{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+#player::after{
+    content: "";
+    display: block;
+    clear: both;
+}
