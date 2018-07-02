@@ -4,6 +4,7 @@ var opponent;
 
 function restart() {
     $("#opponentWrap").hide();
+    $("#battleArena").hide();
 
     $("#playerMsg").text("Choose your champion!");
 
@@ -32,6 +33,7 @@ function renderHealth(character) {
 }
 
 function playerClick(player) {
+    $("#playerMsg").text("PLAYER ONE:");
     player.css("border-color", "#0506ec");
     $(".players").each(function () {
         if ($(this).attr("name") !== player.attr("name")) {
@@ -46,13 +48,12 @@ function playerClick(player) {
     $(".opponents").on("click", function () {
         opponent = $(this);
         opponentClick(opponent);
-        $(".opponents").off('click');
     });
 }
 
 function showOpponents(player) {
     $("#opponentWrap").show();
-
+    $("#opponentMsg").text("Now choose your opponent!");
     $(".opponents").each(function () {
         if ($(this).attr("name") === player.attr("name") || $(this).data("stats").defeated) {
             $(this).hide();
@@ -61,12 +62,15 @@ function showOpponents(player) {
 }
 
 function opponentClick(opponent) {
+    $("#opponentMsg").text("CPU:");
     opponent.css("border-color", "#f02c27");
     $(".opponents").each(function () {
         if ($(this).attr("name") !== opponent.attr("name")) {
             $(this).hide();
         }
     });
+    $(".opponents").off('click');
+    $("#battleArena").show();
 }
 
 

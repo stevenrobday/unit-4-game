@@ -67,3 +67,25 @@ img{
     display: block;
     clear: both;
 }
+
+#opponent::after{
+    content: "";
+    display: block;
+    clear: both;
+}
+
+button{
+    border: 3px solid #ffffff;
+    color: #ffffff;
+    font-size: 20px;
+    padding: 5px 50px;
+    font-weight: bold;
+}
+
+#attack{
+    background-color: #f02c27;
+}
+
+#attack:hover{
+    background-color: #d00010;
+}
