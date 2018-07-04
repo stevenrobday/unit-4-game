@@ -30,7 +30,7 @@ function restart() {
     //create or reset characters' data attributes
 
     //weakest character.  only one path to victory
-    $(".darthVader").data("stats", { name: "Darth Vader", health: 80, attack: 4, attackPoints: 0, counter: 8, defeated: false, finishingMove: "Darth Vader lobs off OPPONENT-POSSESSION hand and proclaims to be PRONOUN-POSSESSION father" });
+    $(".darthVader").data("stats", { name: "Darth Vader", health: 80, attack: 3, attackPoints: 0, counter: 8, defeated: false, finishingMove: "Darth Vader lobs off OPPONENT-POSSESSION hand and proclaims to be PRONOUN-POSSESSION father" });
 
     //three narrow paths to victory
     $(".millenniumFalcon").data("stats", { name: "Millennium Falcon", health: 90, attack: 4, attackPoints: 0, counter: 9, defeated: false, finishingMove: "Millennium Falcon cleans OPPONENT-POSSESSION clock in less than 12 parsecs" });
@@ -67,7 +67,7 @@ function renderHealth(fighter) {
 function playerClick(player) {
     //designate end user
     $("#playerMsg").html("<p>PLAYER ONE:</p>");
-    
+
     //border selected character a shade of blue
     player.css("border-color", "#0506ec");
 
@@ -161,12 +161,12 @@ function fight() {
         opponentsToBeat--;
 
         //beat the game condition
-        if(opponentsToBeat === 0){
+        if (opponentsToBeat === 0) {
             $("#results").append("<p class='spacer'>You saved the galaxy!  Do that again?</p>");
             $("#restart").show();
         }
         //otherwise, the user  must continue
-        else{
+        else {
             //show continue button
             $("#continue").show();
         }
@@ -174,7 +174,7 @@ function fight() {
         return;
     }
     //condition if opponent survives yet
-    else{
+    else {
         //show that the player attacked their opponent
         $("#results").html("<p class='spacer'>" + playerName + " attacks " + opponentName + " for " + playerAttack + " HP!</p>");
     }
@@ -203,7 +203,7 @@ function fight() {
         return;
     }
     //if player survives yet
-    else{
+    else {
         //show user opponent's attack
         $("#results").append("<p class='spacer'>" + opponentName + " attacks " + playerName + " for " + opponentAttack + " HP!</p>");
     }
@@ -271,7 +271,7 @@ function finish(finisher, finished) {
 $("#attack").on("click", fight);
 
 //runs when user clicks on continue
-$("#continue").on("click", function(){
+$("#continue").on("click", function () {
     //hide this
     $(this).hide();
 
