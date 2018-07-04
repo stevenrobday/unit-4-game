@@ -6,7 +6,7 @@ body{
     padding: 10px;
 }
 
-#player, #opponent{
+#player, #opponent, button{
     margin-top: 10px;
     margin-bottom: 30px;
 }
@@ -88,4 +88,12 @@ button{
 
 #attack:hover{
     background-color: #d00010;
+}
+
+#continue{
+    background-color: #0db24c;
+}
+
+#continue:hover{
+    background-color: #009633;
 }
