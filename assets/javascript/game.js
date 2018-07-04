@@ -10,10 +10,17 @@ function restart() {
 
     $("#playerMsg").text("Choose your champion!");
 
-    $(".darthVader").data("stats", { name: "Darth Vader", health: 100, attack: 3, attackPoints: 0, counter: 6, defeated: false, finishingMove: "Darth Vader lobs off OPPONENT-POSSESSION hand and proclaims to be PRONOUN-POSSESSION father" });
-    $(".millenniumFalcon").data("stats", { name: "Millennium Falcon", health: 125, attack: 6, attackPoints: 0, counter: 9, defeated: false, finishingMove: "Millennium Falcon cleans OPPONENT-POSSESSION clock in less than 12 parsecs" });
-    $(".maxRebo").data("stats", { name: "Max Rebo", health: 150, attack: 9, attackPoints: 0, counter: 12, defeated: false, finishingMove: "Max Rebo uses jazz to enchant Obi Wan into slicing off OPPONENT-POSSESSION arm" });
-    $(".jarJar").data("stats", { name: "Jar Jar Binks", health: 200, attack: 15, attackPoints: 0, counter: 18, defeated: false, finishingMove: "Jar Jar Binks trips into OPPONENT, knocking PRONOUN down a shaft inside the Death Star" });
+    //weakest character.  only one path to victory
+    $(".darthVader").data("stats", { name: "Darth Vader", health: 80, attack: 4, attackPoints: 0, counter: 8, defeated: false, finishingMove: "Darth Vader lobs off OPPONENT-POSSESSION hand and proclaims to be PRONOUN-POSSESSION father" });
+    
+    //three narrow paths to victory
+    $(".millenniumFalcon").data("stats", { name: "Millennium Falcon", health: 90, attack: 4, attackPoints: 0, counter: 9, defeated: false, finishingMove: "Millennium Falcon cleans OPPONENT-POSSESSION clock in less than 12 parsecs" });
+
+    //low attack.  two paths to victory.
+    $(".maxRebo").data("stats", { name: "Max Rebo", health: 140, attack: 1, attackPoints: 0, counter: 10, defeated: false, finishingMove: "Max Rebo uses jazz to enchant Obi Wan into slicing off OPPONENT-POSSESSION arm" });
+
+    //low counter and attack.  three paths to victory.
+    $(".jarJar").data("stats", { name: "Jar Jar Binks", health: 150, attack: 2, attackPoints: 0, counter: 4, defeated: false, finishingMove: "Jar Jar Binks trips into OPPONENT, knocking PRONOUN down a shaft inside the Death Star" });
 
     //$(".darthVader").data("stats").health = 69;
 
@@ -78,10 +85,10 @@ function opponentClick(opponent) {
 
 function fight() {
     player.data("stats").attackPoints += player.data("stats").attack;
-    var playerAttack = player.data("stats").attackPoints;
-    var opponentHealth = damage(opponent, playerAttack);
     var playerName = player.data("stats").name;
     var opponentName = opponent.data("stats").name;
+    var playerAttack = player.data("stats").attackPoints;
+    var opponentHealth = damage(opponent, playerAttack);
 
     if (opponentHealth === 0) {
         var finishingMove = finish(player, opponent);
@@ -96,8 +103,19 @@ function fight() {
         $("#results").text(playerName + " attacks " + opponentName + " for " + playerAttack + " HP!");
     }
 
-    var opponentAttack = opponent.data("stats").attack;
+    //declare after possible return, so they're not declared for nothing!
+    var opponentAttack = opponent.data("stats").counter;
     var playerHealth = damage(player, opponentAttack);
+
+    if (playerHealth === 0) {
+        var finishingMove = finish(opponent, player);
+        $("#results").append("<br>" + finishingMove + " for " + opponentAttack + " HP!");
+        $("#attack").hide();
+        return;
+    }
+    else{
+        $("#results").append("<br>" + opponentName + " attacks " + playerName + " for " + opponentAttack + " HP!");
+    }
 }
 
 function damage(fighter, points) {
