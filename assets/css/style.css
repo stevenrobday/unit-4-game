@@ -6,7 +6,7 @@ body{
     padding: 10px;
 }
 
-#player, #opponent, button{
+#player, #opponent, button, .spacer{
     margin-top: 10px;
     margin-bottom: 30px;
 }
@@ -90,10 +90,10 @@ button{
     background-color: #d00010;
 }
 
-#continue{
+#continue, #restart{
     background-color: #0db24c;
 }
 
-#continue:hover{
+#continue:hover, #restart:hover{
     background-color: #009633;
 }
