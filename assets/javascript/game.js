@@ -104,7 +104,7 @@ function showOpponents(player) {
         //show if hidden
         $(this).show();
 
-        //hide if either the character chose, or if they've been defeated
+        //hide if either the player, or if they've been defeated
         if ($(this).data("stats").name === player.data("stats").name || $(this).data("stats").defeated) {
             $(this).hide();
         }
@@ -175,11 +175,13 @@ function fight() {
     }
     //condition if opponent survives yet
     else{
-        //show that the player attacked the opponent
+        //show that the player attacked their opponent
         $("#results").html("<p class='spacer'>" + playerName + " attacks " + opponentName + " for " + playerAttack + " HP!</p>");
     }
 
-    //declare after possible return, so they're not declared for nothing!
+    //declare vars after possible return, so they're not declared for nothing!
+
+    //get opponent attack points
     var opponentAttack = opponent.data("stats").counter;
 
     //damage player and get amount of life left
@@ -239,7 +241,7 @@ function finish(finisher, finished) {
     //get the finishing move
     var finishingMove = finisher.data("stats").finishingMove;
 
-    //switch the girls and boys
+    //get the gender-specific pronoun
     switch (opponentName) {
         case "Darth Vader":
         case "Max Rebo":
@@ -253,11 +255,11 @@ function finish(finisher, finished) {
             break;
     }
 
-    //the finishing move must display the correct name, and add possession if necessary
+    //the finishing move must display the correct name, and add possession if necessary.  replace longer string first.
     finishingMove = finishingMove.replace(/OPPONENT-POSSESSION/g, opponentPossession);
     finishingMove = finishingMove.replace(/OPPONENT/g, opponentName);
 
-    //add in the gender-specific pronouns
+    //add in the pronouns
     finishingMove = finishingMove.replace(/PRONOUN-POSSESSION/g, pronounPossession);
     finishingMove = finishingMove.replace(/PRONOUN/g, pronoun);
 
